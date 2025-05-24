@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+
+    <!-- Tab color -->
+    <meta name="theme-color" content="#6c5ce7"> 
+
+    <!-- Logo -->
+    <link rel="icon" href="images/foxwiggle.png" type="image/png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Notification div -->
+        <div id="notification" class="notification">
+            🔔 You Received a new letter!
+        </div>
+        
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+            <!-- Letter content -->
+            <p><strong>Hi Yasmin,</strong></p>
+            <p>
+                I just wanna say a huge congratulations to you for graduating!! and not just graduating, but getting honors too! 🎓✨
+                Like girlll?? That’s seriously amazing! You really did well, and I’m genuinely proud of you.
+                Now you get to flex that cord and walk up the stage like the queen you are. Just don’t trip, okay? Haha kidding (but also not kidding hehe).
+            </p>
+            <p>
+            I know you’re going to do great in the future, especially with your choice of major because honestly, you’re one of the smartest people I know. 
+            You deserve all the good things coming your way because of your dedication and effort. 
+            I believe this is just the beginning of many great successes for you. 
+            I’m sure you will keep doing well and shine even brighter in whatever you choose to do next. 
+            You’re smart and capable, and I have no doubt that your future is going to be full of wonderful opportunities. 
+            Just keep believing in yourself, and keep reaching for your dreams. Congratulations again!
+            </p>
+            <p>
+                Also as your senior (hehe I can't believe I'm saying this), I want you to know that you can always reach out to me if you ever need anything. 
+                Whether it’s advice, help with school stuff, or just someone to rant to, I’ll gladly be here for you.
+                Seriously, no pressure just hit me up anytime.
+                Also, if you ever feel stressed or worried, just chill and know you have someone to talk to.
+                Share your worries, chat about anything, play games or just have a random conversation whenever you want.
+                You’re free to dm me anytime, no matter what. 
+            </p>
+            <p>
+                And I want to say thank you for reaching out to me whenever you could. it might seem like a small thing, just a quick “How’s your day?” or a little chat, but honestly, it means a lot. 
+                It feels nice knowing someone is there, watching out and willing to talk, and I really appreciate that.
+            </p>
+            <p>
+                We might not know each other very well yet, but on your big day, I wanted to send you this message to hopefully make you feel a little special on your big day hehe. <br>
+                It’s not much, but I really hope you like it! 
+                Your graduation is such a huge milestone, so here’s a small gift to celebrate you and all the hard work you’ve put in. <br>
+                You deserve to feel amazing today, so enjoy every moment and remember, this is just the start of great things coming your way!<br>
+            </p>
+    
+            <p><strong>~Nessa</strong></p>
+                        <div class="spotify-code">
+                            <img src="gif/dog.gif">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="envelope-shadow"></div>
+            <div class="circle"></div>
+        </div>
+
+        <!-- Q&A Section -->
+        <div class="qa-container" style="display: none;">
+            <div id="question" class="qa-question">
+                Would you like to continue?
+            </div>
+            <button id="yes-btn-qa" class="qa-btn">Yes</button>
+            <button id="no-btn-qa" class="qa-btn">No</button>
+        </div>
+    </div>
+
+
+<script>
+    window.onload = function() {
+        const notification = document.getElementById('notification');
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 4000); // Hide after 4 seconds
+    };
+
+    const circle = document.querySelector('.circle');
+    const letter = document.querySelector('.letter');
+
+    // Open the letter when the circle is clicked
+    circle.addEventListener('click', function () {
+        letter.classList.add('show');
+    });
+
+    const envelopeWrapper = document.querySelector('.envelope-wrapper');
+    envelopeWrapper.addEventListener('click', () => {
+        envelopeWrapper.classList.toggle('flap');
+    });
+
+    // Q&A logic
+    let questionContainer = document.getElementById('question');
+    let yesBtn = document.getElementById('yes-btn-qa');
+    let noBtn = document.getElementById('no-btn-qa');
+
+    // Show the Q&A section only when the letter is scrolled to the bottom
+    let letterElement = document.querySelector('.letter');
+    let qaContainer = document.querySelector('.qa-container');
+
+    letterElement.addEventListener('scroll', function() {
+        if (letterElement.scrollHeight - letterElement.scrollTop <= letterElement.clientHeight + 10) {
+            qaContainer.style.display = 'block';
+        }
+    });
+
+     noBtn.addEventListener('click', function () {
+            const container = document.querySelector('.qa-container');
+            const containerRect = container.getBoundingClientRect();
+            const offsetX = Math.random() > 0.5 ? 150 : -150;
+            const offsetY = Math.random() > 0.5 ? 100 : -100;
+            noBtn.style.transition = 'transform 0.5s ease';
+            noBtn.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+     });
+
+    // 👉 Navigate to another page when "Yes" is clicked
+    yesBtn.addEventListener('click', function() {
+        // Replace with your actual target HTML file name
+        window.location.href = 'second.html';
+    });
+</script>
+</body>
+</html>
